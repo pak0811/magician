@@ -1,53 +1,7 @@
 
-# magician
+# Magician
 
   Library for **easy** image manipulation. Requires ImageMagick.
-
-# Here it is!
-
-```
-
-                        sMy://///////////////////////////////////:sMh`                                                     
-                        .mN+//////////////////////////////////////mN-                                                      
-                         +Mh/////////////////////////////////////sMs                                                       
-                         `dN+////////////////////////////////////mN-                                                       
-           ``````         +Mh///////////////////////////////////sMs                                                        
-        ```......```      .mN+//////////////////////////////////mN-                                                        
-       ``.-:+ooo/-..``     oMy:////////////////////////////////oMh                                                         
-      ``.-/y+::/oy:..`     -Nm/////////////////////////////////dM/                                                         
-      ``.-oy-:/:-d/-.``    `hMo://////////////////////////////+Nm.                                                         
-      ``.-:sso+oyo-.``      +Mh//////////////////////////////:sMs                                                          
-       ``..-+yoso-.``       .mN//++ossyyyyyyyyyyyyyyyyyyyyyssodN/                                                          
-  `:/:-.````:dsyy```        `hMdyyso+//:::-----------::://++oyNm.                   `.-:/:`                                
-  :msosyyso+oNyhd.`          oMy::::------........------:::::oNh`          ``.-:/+osyysosm:                                
-  `oho////++oNhhNysso+//:--../Md/:::------.........-----::::/yMs..--://+ossyyysoo++////oho`                                
-    -oyysso++mdyNo/+++oosssyyyddhyyyyssssooooooooooossssyyyyhddyyysssoo++////////+ossyyo-                                  
-      `.-:/osmdyNhoo++/////////////++++++++++ooo++++++++++/////////////++oossyysso/:-.`                                    
-            `smymy/+oossyyyyyssooo+++++++/////////////+++++ooosssyyyydmso+/:-.``                                           
-             +Nymy     `.omdhyyhmmhssssyy+++yyyyyyy+:-/syooooyds//:--+dh`                                                  
-             :Nydd      om+--:/-::-...::`:o/`:/..+..sy+`::....--ooh:..oN-                                                  
-             -Nyhm`    `dd../ho/......+.`hNh`.+..+`.hdo`:/.....--oy-./dh`                                                  
-             .mhhN.     +N+.-o-.......-/-.---/:--:/-.--::........::/yds:++o/                                               
-           `--ddyN/`    `+dy/...........-:::::osso:::/:--.........sNo.`s+--h:--:/++.                                       
-          .y///+dNhy+`    .yN:........-/ydddmmmmmmmmmmmmh+-.......hd`  -y..+ms////yo.`                                     
-         `:hyyyhhNy+dh:`   -Ns......../NMMMMMMMMMMMMMMMMMm/....../N+   `ds+sooshsso+so`                                    
-         so///yNymo///yh/.``sm:.......-/+ssydmNNNNNmhss++:....../my``-+hm:-.../yoooosss.                                   
-         /hyyydNyddoosmyhhy/:hm/........./:odmmmmmmmd:/:......-omy:+yhyym:.....-ys//+oy-                                   
-         so:::yMyhm-.ydsssshhmmdy/-.......-:////////:--....-:odhmdhyssssmo.....-yyso+ss                                    
-         `/hhyyddhN:omysssssohd/ohhyo/:---------------::/oyhhs//myossssoym/....:hoo+++:                                    
-          .h/::/dhNmmyssssssssdy-.:+oyhhddddhdddddddmmdyyo/:-.-hdssssssssyms/::+ys.                                        
-           `-::hmyNdhhyssssssssms-....../NmdmdmNNdddmm:......-ydssssssssyhhs+o+/.                                          
-               omymo`:ohhyssssssmy--....-mmdddmymmddNd.....-:hdssssssyhho-`                                                
-      ``...----oNymh---:+sddysssshdys/..-dmhhhy+shhhmh.../sydhsssshdhs:-..````````                                         
-     `-::::::::oNydd:::::::oNssssssymo..-hh+++++++++dy...smysssssyN+:::::::::::::::::--.`                                  
-       `.::::::+Nhdm/::::::+Nyssssym/...-hh+++++++++dy....+msssssyN/:::::::::::::::::::-.                                  
-          `-:::/osoo:::::::+Nsssssms....-dh+++++++++dy.....ydssssyN/::::::::::::::::-`                                     
-             .-::::::::::::oNssssyN:....-dy+++++++++hh...../NsssssN+:::::::::::::-`                                        
-               `.::::::::::ymsssohd-....-ms+++++++++hd.....-myosssNo::::::::::-.                                           
-                  .::::::::ddossodh-....:No+++++++++ym-....-dhossomy::::::::-`
-
-```
-
 
 # Installation
 
@@ -59,11 +13,11 @@ The main dependency is ImageMagick. convert and identify command-line tools, in 
 
 ```brew install imagemagick```
 
+or using [ImageMagick Installer](http://cactuslab.com/imagemagick/) by CactusLab.
+
 # Features
 
-This is very early release, so Magician does not have a lot of features.
-
-* Resizing images
+* Resizing images (-resize, -thumbnail or -sample)
 * Cropping images
 * Getting dimensions of an image
 
@@ -72,16 +26,16 @@ This is very early release, so Magician does not have a lot of features.
 ```
 Magician = require 'magician'
 
-image = new Magician "#{ __dirname }/source.jpg", "#{ __dirname }/target.jpg"
+image = new Magician "source.jpg", "target.jpg"
 
-image.resize width: 100, height: 100, (err) ->
-	// done!
+image.resize width: 100, height: 100, (err) -> # you can force magician to use thumbnail or sample methods by passing thumbnail: yes or sample: yes respectively.
+	# done!
 	
 image.crop x: 0, y: 0, width: 200, height: 100, (err) ->
-	// done!
+	# done!
 
 image.convert (err) ->
-	// convert from source format to target format
+	# convert from source format to target format
 
 image.getDimensions (err, dimensions) ->
 	width = dimensions.width
@@ -107,7 +61,6 @@ npm install --development
 * Resizing using ratio
 * Improve test for convert() method
 * Blurring image
-* getting base64 encoded content of image for data:URIs
 
 # License 
 
