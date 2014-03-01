@@ -14,7 +14,7 @@ class Magician
 		command = 'resize'
 		command = 'thumbnail' if options.thumbnail
 		command = 'sample' if options.sample
-		exec "convert #{ @srcPath } -#{ command } #{ options.width }x#{ options.height }! #{ @destPath }", (err) ->
+		exec "convert #{ @srcPath } -#{ command } #{ options.width }x#{ options.height } #{ @destPath }", (err) ->
 			callback err if callback
 	
 	resizeTo: (width, height, callback) -> # backwards compatability, to be removed
