@@ -19,7 +19,7 @@ class Magician
 			callback err if callback
 	
 	resizeTo: (width, height, callback) -> # backwards compatability, to be removed
-		@resize width: width, height: height, callback
+		@resize width: width, height: height, extra: '-auto-orient', callback
 	
 	crop: (options, callback) ->
 		extra = if options.extra? then options.extra else ''
@@ -34,7 +34,7 @@ class Magician
 			callback err if callback
 			
 	cropFrom: (x, y, width, height, callback) -> # backwards compatability, to be removed
-		@crop x: x, y: y, width: width, height: height, callback
+		@crop x: x, y: y, width: width, height: height, extra: '-auto-orient', callback
 	
 	convert: (callback) ->
 		exec "convert #{ @srcPath } #{ @destPath }", (err) ->
