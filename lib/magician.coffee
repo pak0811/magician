@@ -11,16 +11,18 @@ class Magician
 		if not options.width or options.width < 0 or not options.height or options.height < 0
 			return callback new Error "width and height should be bigger than 0"
 		
+		extra = if options.extra? then options.extra else ''
 		command = 'resize'
 		command = 'thumbnail' if options.thumbnail
 		command = 'sample' if options.sample
-		exec "convert #{ @srcPath } -#{ command } #{ options.width }x#{ options.height } #{ @destPath }", (err) ->
+		exec "convert #{ @srcPath } -#{ command } #{ options.width }x#{ options.height } #{ extra } #{ @destPath }", (err) ->
 			callback err if callback
 	
 	resizeTo: (width, height, callback) -> # backwards compatability, to be removed
 		@resize width: width, height: height, callback
 	
 	crop: (options, callback) ->
+		extra = if options.extra? then options.extra else ''
 		options.x = 0 if not options.x
 		options.y = 0 if not options.y
 		
@@ -28,7 +30,7 @@ class Magician
 			callback new Error "x, y should be bigger than -1; width and height should be bigger than 0" if callback
 			return
 		
-		exec "convert #{ @srcPath } -crop #{ options.width }x#{ options.height }+#{ options.x }+#{ options.y } #{ @destPath }", (err) ->
+		exec "convert #{ @srcPath } -crop #{ options.width }x#{ options.height }+#{ options.x }+#{ options.y } #{ extra } #{ @destPath }", (err) ->
 			callback err if callback
 			
 	cropFrom: (x, y, width, height, callback) -> # backwards compatability, to be removed
